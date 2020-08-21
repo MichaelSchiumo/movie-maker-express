@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://michaelschiumo:Kazakhstan2017@moviemaker.mvohp.mongodb.net/MovieMaker?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://michaelschiumo:Kazakhstan2017@moviemaker.mvohp.mongodb.net/MovieMaker?retryWrites=true&w=majority",
+  "jwtSecret": "mssecret"
 }
