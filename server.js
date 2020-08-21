@@ -4,8 +4,10 @@ const connectDB = require('./config/db');
 const app = express();
 
 //connect DB
-
 connectDB();
+
+//initialize middleware
+app.use(express.json({ extended: false }));
 
 //check that server is working
 app.get('/', (req, res) => res.json({ msg: 'Welcome to Movie Maker API' }));
