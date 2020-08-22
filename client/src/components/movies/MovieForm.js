@@ -1,8 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import MovieContext from '../../context/movie/movieContext';
 
 const MovieForm = () => {
   const movieContext = useContext(MovieContext);
+
+  const { addMovie } = movieContext;
 
   const [movie, setMovie] = useState({
     img_url: '',
@@ -10,7 +12,7 @@ const MovieForm = () => {
     id: '',
   });
 
-  const { img_url, desc, id } = movie;
+  const { img_url, desc, title } = movie;
 
   const onChange = (event) =>
     setMovie({ ...movie, [event.target.name]: event.target.value });
@@ -20,8 +22,8 @@ const MovieForm = () => {
     movieContext.addMovie(movie);
     setMovie({
       img_url: '',
+      title: '',
       desc: '',
-      id: '',
     });
   };
 
@@ -37,16 +39,16 @@ const MovieForm = () => {
       />
       <input
         type='text'
-        placeholder='desc'
-        name='desc'
-        value={desc}
+        placeholder='title'
+        name='title'
+        value={title}
         onChange={onChange}
       />
       <input
         type='text'
-        placeholder='id'
-        name='id'
-        value={id}
+        placeholder='desc'
+        name='desc'
+        value={desc}
         onChange={onChange}
       />
       <div>

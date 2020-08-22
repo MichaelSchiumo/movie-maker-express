@@ -5,11 +5,9 @@ const MovieItem = ({ movie }) => {
 
   return (
     <div className='card bg-light'>
-      <h3 className='text-primary text-left'>
-        <img src={movie.img_url} />
-        <h4>{movie.desc}</h4>
-        <h4>ID:{movie.id}</h4>
-      </h3>
+      <h3 className='text-primary text-left'></h3>
+      <img src={movie.img_url} />
+      <h4>{movie.desc}</h4>
       <p>
         <button className='btn btn-dark'>See Reviews</button>
       </p>

@@ -1,44 +1,54 @@
 import React, { useReducer } from 'react';
-import { v4 as uuid } from 'uuid';
+import axios from 'axios';
 import MovieContext from './movieContext';
 import movieReducer from './movieReducer';
 import {
+  GET_MOVIES,
+  CLEAR_MOVIES,
   ADD_MOVIE,
   SET_CURRENT,
   CLEAR_CURRENT,
   FILTER_MOVIES,
   CLEAR_FILTER,
+  MOVIE_ERROR,
 } from '../types';
 
 const MovieState = (props) => {
   const initialState = {
-    movies: [
-      {
-        img_url:
-          'https://tse2.mm.bing.net/th?id=OIP.PxCyW_JUxLOvZf6pYtnlxwHaLH&pid=Api',
-        desc: 'GoodFellas',
-        id: 1,
-      },
-      {
-        img_url:
-          'https://thegobetween.files.wordpress.com/2010/08/inception01.jpg',
-        desc: 'Inception',
-        id: 2,
-      },
-      {
-        img_url:
-          'http://resizing.flixster.com/r7gjyIxCc4pTux_uuXu-lefTzB0=/800x1200/dkpu1ddg7pbsk.cloudfront.net/movie/11/17/00/11170091_ori.jpg',
-        desc: 'Wedding Crashers',
-        id: 3,
-      },
-    ],
+    movies: [],
     filtered: null,
+    error: null,
   };
   const [state, dispatch] = useReducer(movieReducer, initialState);
 
+  //Get movies
+  const getMovies = async () => {
+    try {
+      const res = await axios.get('/api/movies');
+      dispatch({ GET_MOVIES, payload: res.data });
+    } catch (error) {
+      dispatch({
+        type: MOVIE_ERROR,
+        payload: error.response.msg,
+      });
+    }
+  };
+
   //ADD MOVIE
-  const addMovie = (movie) => {
-    dispatch({ type: ADD_MOVIE, payload: movie });
+  const addMovie = async (movie) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const res = await axios.post('/api/movies', movie, config);
+
+      dispatch({ type: ADD_MOVIE, payload: res.data });
+    } catch (error) {
+      dispatch({ type: MOVIE_ERROR, payload: error.response.msg });
+    }
   };
   //SET CURRENT
   //CLEAR CURRENT
@@ -56,9 +66,11 @@ const MovieState = (props) => {
       value={{
         movies: state.movies,
         filtered: state.filtered,
+        error: state.error,
         addMovie,
         filterMovies,
         clearFilter,
+        getMovies,
       }}
     >
       {props.children}

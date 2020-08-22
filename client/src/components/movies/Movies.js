@@ -1,18 +1,38 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import MovieContext from '../../context/movie/movieContext';
 import MovieItem from './MovieItem';
+import Spinner from '../../components/layout/Spinner';
 
 const Movies = () => {
   //access any state or methods associated with movie context
   const movieContext = useContext(MovieContext);
 
-  const { movies, filtered } = movieContext;
+  const { movies, filtered, getMovies, loading } = movieContext;
+
+  useEffect(() => {
+    getMovies();
+    //esling-disable-next-line
+  }, []);
+
+  if (movies.length === 0) {
+    return <h4>Please add a movie</h4>;
+  }
 
   return (
     <Fragment>
-      {filtered !== null
-        ? filtered.map((movie) => <MovieItem movie={movie} key={movie.id} />)
-        : movies.map((movie) => <MovieItem movie={movie} key={movie.id} />)}
+      {movies !== null && !loading ? (
+        <Fragment>
+          {filtered !== null
+            ? filtered.map((movie) => (
+                <MovieItem movie={movie} key={movie._id} />
+              ))
+            : movies.map((movie) => (
+                <MovieItem movie={movie} key={movie._id} />
+              ))}
+        </Fragment>
+      ) : (
+        <Spinner />
+      )}
     </Fragment>
   );
 };
