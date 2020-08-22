@@ -46,8 +46,8 @@ const MovieState = (props) => {
       const res = await axios.post('/api/movies', movie, config);
 
       dispatch({ type: ADD_MOVIE, payload: res.data });
-    } catch (error) {
-      dispatch({ type: MOVIE_ERROR, payload: error.response.msg });
+    } catch (err) {
+      dispatch({ type: MOVIE_ERROR, payload: err.response.msg });
     }
   };
   //SET CURRENT

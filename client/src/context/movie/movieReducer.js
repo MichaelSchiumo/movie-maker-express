@@ -22,7 +22,6 @@ export default (state, action) => {
       return {
         ...state,
         movies: [...state.movies, action.payload],
-        loading: false,
       };
     case FILTER_MOVIES:
       return {
@@ -30,7 +29,7 @@ export default (state, action) => {
         filtered: state.movies.filter((movie) => {
           //desc should be changed to title of movie
           const regex = new RegExp(`${action.payload}`, 'gi');
-          return movie.desc.match(regex);
+          return movie.title.match(regex);
         }),
         loading: false,
       };

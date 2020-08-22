@@ -9,7 +9,7 @@ const MovieForm = () => {
   const [movie, setMovie] = useState({
     img_url: '',
     desc: '',
-    id: '',
+    title: '',
   });
 
   const { img_url, desc, title } = movie;
@@ -19,7 +19,7 @@ const MovieForm = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    movieContext.addMovie(movie);
+    addMovie(movie);
     setMovie({
       img_url: '',
       title: '',
