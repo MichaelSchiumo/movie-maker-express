@@ -32,8 +32,8 @@ const Register = () => {
     } else {
       register({
         name,
+        email,
         password,
-        password_confirmation,
       });
     }
   };
