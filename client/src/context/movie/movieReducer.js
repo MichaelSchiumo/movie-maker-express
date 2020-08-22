@@ -1,11 +1,7 @@
 import {
   ADD_MOVIE,
-  SET_CURRENT,
-  CLEAR_CURRENT,
   FILTER_MOVIES,
   CLEAR_FILTER,
-  SET_ALERT,
-  REMOVE_ALERT,
   MOVIE_ERROR,
   GET_MOVIES,
 } from '../types';
@@ -21,7 +17,8 @@ export default (state, action) => {
     case ADD_MOVIE:
       return {
         ...state,
-        movies: [...state.movies, action.payload],
+        movies: [action.payload, ...state.movies],
+        loading: false,
       };
     case FILTER_MOVIES:
       return {

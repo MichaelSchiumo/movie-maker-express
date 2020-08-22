@@ -11,7 +11,7 @@ const Movies = () => {
 
   useEffect(() => {
     getMovies();
-    //esling-disable-next-line
+    //eslint-disable-next-line
   }, []);
 
   if (movies.length === 0) {
