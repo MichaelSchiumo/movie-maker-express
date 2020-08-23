@@ -6,7 +6,6 @@ const MovieItem = ({ movie }) => {
 
   return (
     <div className='card bg-light'>
-      <h3 className='text-primary text-left'>Heading</h3>
       <img src={img_url} alt='poster' />
       <h6>{title}</h6>
       <h4>{desc}</h4>
