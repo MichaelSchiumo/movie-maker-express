@@ -19,7 +19,7 @@ const MovieForm = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    movieContext.addMovie(movie);
+    addMovie(movie);
     setMovie({
       img_url: '',
       title: '',
