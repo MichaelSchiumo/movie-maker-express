@@ -13,14 +13,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div className='grid-2'>
-      <div>
-        <MovieForm />
-      </div>
-      <div>
-        <MovieFilter />
-        <Movies />
-      </div>
+    <div>
+      <MovieFilter />
+      <Movies />
     </div>
   );
 };
