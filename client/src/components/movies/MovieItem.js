@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const MovieItem = ({ movie }) => {
   const { img_url, title, desc } = movie;
@@ -14,6 +15,10 @@ const MovieItem = ({ movie }) => {
       </p>
     </div>
   );
+};
+
+MovieItem.propTypes = {
+  movie: PropTypes.object.isRequired,
 };
 
 export default MovieItem;
