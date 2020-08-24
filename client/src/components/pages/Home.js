@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Movies from '../movies/Movies';
 import MovieForm from '../movies/MovieForm';
 import MovieFilter from '../movies/MovieFilter';
