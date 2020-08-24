@@ -23,14 +23,14 @@ const Home = () => {
             className='btn btn-primary btn-block text-center'
             href='/add_movies'
           >
-            Add Movies
+            Add Movie
           </a>
         ) : (
           ''
         )}
       </div>
       <MovieFilter />
-      <div className='grid-3'>
+      <div className='grid-2'>
         <Movies />
       </div>
     </div>
