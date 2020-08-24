@@ -53,7 +53,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  title: 'Movie Maker',
+  title: 'MovieMaker',
   icon: 'fas fa-film',
 };
 
