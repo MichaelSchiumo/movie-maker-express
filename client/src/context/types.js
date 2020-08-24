@@ -16,3 +16,4 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const MOVIE_ERROR = 'MOVIE_ERROR';
+export const IS_ADMIN = 'IS_ADMIN';

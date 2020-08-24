@@ -12,6 +12,7 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_ERRORS,
+  IS_ADMIN,
 } from '../types';
 
 const AuthState = (props) => {
@@ -21,6 +22,7 @@ const AuthState = (props) => {
     user: null,
     loading: true,
     error: null,
+    isAdmin: false,
   };
   const [state, dispatch] = useReducer(authReducer, initialState);
 
@@ -34,6 +36,10 @@ const AuthState = (props) => {
       const res = await axios.get('/api/auth');
 
       dispatch({ type: USER_LOADED, payload: res.data });
+
+      if (res.data.name === 'Admin') {
+        dispatch({ type: IS_ADMIN });
+      }
     } catch (error) {
       dispatch({ type: AUTH_ERROR });
     }
@@ -93,6 +99,7 @@ const AuthState = (props) => {
         loading: state.loading,
         user: state.user,
         error: state.error,
+        isAdmin: state.isAdmin,
         register,
         loadUser,
         login,
