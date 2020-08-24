@@ -6,7 +6,10 @@ const User = require('../models/User');
 const Movie = require('../models/Movie');
 const Review = require('../models/Review');
 const mongoose = require('mongoose');
-//GET ALL route for movies
+
+//@route GET api/movies
+//@desc Get all movies
+//@access Public
 router.get('/', function (req, res) {
   try {
     Movie.find({}, function (err, movies) {
@@ -27,7 +30,6 @@ router.get('/', function (req, res) {
 //@route POST api/movies
 //@desc Add new movie
 //@access Private
-//this is where you can require admin
 router.post(
   '/',
   [
@@ -64,8 +66,8 @@ router.post(
   }
 );
 
-//Read One movie
-
+//@route GET /api/movies/:id
+//@desc Fetch an individual movie
 router.get('/:id', async (req, res) => {
   try {
     const movie = await Movie.findOne({ _id: req.params.id });
@@ -79,8 +81,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//create review
-
+//@route POST /api/movies/:id
+//@desc Create a review for a specific movie
 router.post('/:id', async (req, res) => {
   try {
     const movie = await Movie.findOne({ _id: req.params.id });
@@ -105,7 +107,8 @@ router.post('/:id', async (req, res) => {
   }
 });
 
-//get all reviews for a movie
+//@route GET api/movies/:id
+//@desc Get all reviews for a movie
 router.get('/:id', async (req, res) => {
   try {
     const movie = await Movie.findOne({ _id: req.params.id });
