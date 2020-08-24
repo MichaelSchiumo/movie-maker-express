@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 const MovieItem = ({ movie }) => {
   const { img_url, title, desc } = movie;
 
-  const randStar = Math.floor(Math.random() * 5) + 1;
-
   return (
     <div className='card bg-light align-items:center'>
       <img src={img_url} alt='poster' />
