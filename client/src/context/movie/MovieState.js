@@ -4,7 +4,6 @@ import MovieContext from './movieContext';
 import movieReducer from './movieReducer';
 import {
   GET_MOVIES,
-  CLEAR_MOVIES,
   ADD_MOVIE,
   SET_CURRENT,
   CLEAR_CURRENT,
@@ -22,7 +21,7 @@ const MovieState = (props) => {
   };
   const [state, dispatch] = useReducer(movieReducer, initialState);
 
-  //Get movies
+  //GET MOVIES
   const getMovies = async () => {
     try {
       const res = await axios.get('/api/movies');

@@ -26,7 +26,6 @@ export default (state, action) => {
       return {
         ...state,
         filtered: state.movies.filter((movie) => {
-          //desc should be changed to title of movie
           const regex = new RegExp(`${action.payload}`, 'gi');
           return movie.title.match(regex);
         }),

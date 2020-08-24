@@ -4,10 +4,9 @@ import MovieItem from './MovieItem';
 import Spinner from '../../components/layout/Spinner';
 
 const Movies = () => {
-  //access any state or methods associated with movie context
   const movieContext = useContext(MovieContext);
 
-  const { movies, filtered, getMovies, loading, current } = movieContext;
+  const { movies, filtered, getMovies, loading } = movieContext;
 
   useEffect(() => {
     getMovies();
