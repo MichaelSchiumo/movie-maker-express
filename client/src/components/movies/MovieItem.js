@@ -7,11 +7,8 @@ const MovieItem = ({ movie }) => {
   return (
     <div className='card bg-light'>
       <img src={img_url} alt='poster' />
-      <h6>{title}</h6>
-      <h4>{desc}</h4>
-      <p>
-        <button className='btn btn-dark'>See Reviews</button>
-      </p>
+      <h1 className='text-center'>{title}</h1>
+      <p className='text-center'>{desc}</p>
     </div>
   );
 };

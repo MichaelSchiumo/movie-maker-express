@@ -32,21 +32,21 @@ const MovieForm = () => {
       <h2>Add Movie</h2>
       <input
         type='text'
-        placeholder='img_url'
+        placeholder='Movie Poster URL'
         name='img_url'
         value={img_url}
         onChange={onChange}
       />
       <input
         type='text'
-        placeholder='title'
+        placeholder='Title'
         name='title'
         value={title}
         onChange={onChange}
       />
       <input
         type='text'
-        placeholder='desc'
+        placeholder='Synopsis'
         name='desc'
         value={desc}
         onChange={onChange}
