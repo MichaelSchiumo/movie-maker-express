@@ -16,6 +16,7 @@ app.get('/', (req, res) => res.json({ msg: 'Welcome to Movie Maker API' }));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/movies', require('./routes/movies'));
+// app.use('/api/reviews', require('./routes/reviews'));
 
 const PORT = process.env.PORT || 5000;
 

@@ -17,9 +17,22 @@ const Home = () => {
 
   return (
     <div>
-      {isAdmin ? <Link to='/add_movies'>Add Movies</Link> : ''}
+      <div>
+        {isAdmin ? (
+          <a
+            className='btn btn-primary btn-block text-center'
+            href='/add_movies'
+          >
+            Add Movie
+          </a>
+        ) : (
+          ''
+        )}
+      </div>
       <MovieFilter />
-      <Movies />
+      <div className='grid-2'>
+        <Movies />
+      </div>
     </div>
   );
 };

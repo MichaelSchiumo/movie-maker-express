@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import MovieContext from '../../context/movie/movieContext';
 
 const MovieForm = () => {
@@ -29,24 +29,24 @@ const MovieForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <h2>Add Movie</h2>
+      <h1 className='text-center underline'>Add Movie</h1>
       <input
         type='text'
-        placeholder='img_url'
+        placeholder='Movie Poster URL'
         name='img_url'
         value={img_url}
         onChange={onChange}
       />
       <input
         type='text'
-        placeholder='title'
+        placeholder='Title'
         name='title'
         value={title}
         onChange={onChange}
       />
       <input
         type='text'
-        placeholder='desc'
+        placeholder='Synopsis'
         name='desc'
         value={desc}
         onChange={onChange}
