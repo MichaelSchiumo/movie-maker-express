@@ -7,7 +7,7 @@ const Movies = () => {
   //access any state or methods associated with movie context
   const movieContext = useContext(MovieContext);
 
-  const { movies, filtered, getMovies, loading } = movieContext;
+  const { movies, filtered, getMovies, loading, current } = movieContext;
 
   useEffect(() => {
     getMovies();
