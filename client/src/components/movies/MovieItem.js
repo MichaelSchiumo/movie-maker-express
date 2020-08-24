@@ -1,15 +1,21 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import MovieContext from '../../context/movie/movieContext';
+import AlertContext from '../../context/alert/alertContext';
 
 const MovieItem = ({ movie }) => {
   const { img_url, title, desc, _id } = movie;
   const movieContext = useContext(MovieContext);
+  const alertContext = useContext(AlertContext);
 
   const { setCurrent, clearCurrent, current } = movieContext;
+  const { setAlert } = alertContext;
 
   const onSelect = () => {
-    setCurrent(_id);
+    setAlert(
+      'Sorry, we cannot display reviews for this movie currently',
+      'danger'
+    );
   };
 
   const onDeselect = () => {
@@ -34,7 +40,6 @@ const MovieItem = ({ movie }) => {
         <button onClick={onSelect} className='btn btn-primary btn-block'>
           See Reviews
         </button>
-        {current !== null ? <button onClick={onDeselect}>Go Back</button> : ''}
       </div>
     </div>
   );
