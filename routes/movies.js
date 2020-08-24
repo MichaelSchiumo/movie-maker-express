@@ -5,7 +5,7 @@ const auth = require('../middleware/auth');
 const User = require('../models/User');
 const Movie = require('../models/Movie');
 const Review = require('../models/Review');
-
+const mongoose = require('mongoose');
 //GET ALL route for movies
 router.get('/', function (req, res) {
   try {
@@ -71,6 +71,32 @@ router.get('/:id', async (req, res) => {
     const movie = await Movie.findOne({ _id: req.params.id });
 
     if (!movie) return res.status(404).json({ msg: 'Contact not found' });
+
+    res.json(movie);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+//create review
+
+router.post('/:id', async (req, res) => {
+  try {
+    const movie = await Movie.findOne({ _id: req.params.id });
+
+    if (!movie) return res.status(404).json({ msg: 'Contact not found' });
+
+    const { score, comment } = req.body;
+
+    const newReview = new Review({
+      score,
+      comment,
+    });
+
+    const review = await newReview.save();
+    movie.reviews.push(review);
+    movie.save();
 
     res.json(movie);
   } catch (error) {

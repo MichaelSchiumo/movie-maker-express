@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const ReviewSchema = mongoose.Schema({
-  movie: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'movies',
-  },
   score: {
     type: Number,
     required: true,
@@ -12,10 +8,6 @@ const ReviewSchema = mongoose.Schema({
   comment: {
     type: String,
     required: true,
-  },
-  date: {
-    type: Date,
-    default: Date.now,
   },
 });
 
