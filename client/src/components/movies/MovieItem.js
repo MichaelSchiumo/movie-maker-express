@@ -5,9 +5,11 @@ const MovieItem = ({ movie }) => {
   const { img_url, title, desc } = movie;
 
   return (
-    <div className='card bg-light'>
+    <div className='card bg-light align-items:center'>
       <img src={img_url} alt='poster' />
-      <h1 className='text-center medium'>{title}</h1>
+      <h1 className='text-center medium'>
+        <i className='fas fa-ticket-alt' /> {title}
+      </h1>
       <p className='text-center text-medium'>{desc}</p>
     </div>
   );

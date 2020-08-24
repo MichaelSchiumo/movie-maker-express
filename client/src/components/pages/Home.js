@@ -17,18 +17,7 @@ const Home = () => {
 
   return (
     <div>
-      <div>
-        {isAdmin ? (
-          <a
-            className='btn btn-primary btn-block text-center'
-            href='/add_movies'
-          >
-            Add Movie
-          </a>
-        ) : (
-          ''
-        )}
-      </div>
+      <div>{isAdmin ? <MovieForm /> : ''}</div>
       <MovieFilter />
       <div className='grid-2'>
         <Movies />
