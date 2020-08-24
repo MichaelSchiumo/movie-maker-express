@@ -15,6 +15,10 @@
   padding: 0;
 }
 
+.checked {
+  color: orange;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;

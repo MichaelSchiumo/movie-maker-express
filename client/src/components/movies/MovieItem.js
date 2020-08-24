@@ -10,6 +10,13 @@ const MovieItem = ({ movie }) => {
       <h1 className='text-center medium'>
         <i className='fas fa-ticket-alt' /> {title}
       </h1>
+      <div className='text-center'>
+        <span class='fa fa-star checked'></span>
+        <span class='fa fa-star checked'></span>
+        <span class='fa fa-star checked'></span>
+        <span class='fa fa-star'></span>
+        <span class='fa fa-star'></span>
+      </div>
       <p className='text-center text-medium'>{desc}</p>
     </div>
   );
