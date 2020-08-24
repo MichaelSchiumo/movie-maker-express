@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Movies from '../movies/Movies';
 import MovieForm from '../movies/MovieForm';
 import MovieFilter from '../movies/MovieFilter';
@@ -17,18 +16,7 @@ const Home = () => {
 
   return (
     <div>
-      <div>
-        {isAdmin ? (
-          <a
-            className='btn btn-primary btn-block text-center'
-            href='/add_movies'
-          >
-            Add Movie
-          </a>
-        ) : (
-          ''
-        )}
-      </div>
+      <div>{isAdmin ? <MovieForm /> : ''}</div>
       <MovieFilter />
       <div className='grid-2'>
         <Movies />
