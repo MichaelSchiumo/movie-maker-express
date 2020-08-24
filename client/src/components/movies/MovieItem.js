@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import MovieContext from '../../context/movie/movieContext';
 
 const MovieItem = ({ movie }) => {
-  const { img_url, title, desc } = movie;
+  const { img_url, title, desc, _id } = movie;
+  const movieContext = useContext(MovieContext);
+
+  const { setCurrent, clearCurrent, current } = movieContext;
+
+  const onSelect = () => {
+    setCurrent(_id);
+  };
+
+  const onDeselect = () => {
+    clearCurrent();
+  };
 
   return (
     <div className='card bg-light align-items:center'>
@@ -19,7 +31,10 @@ const MovieItem = ({ movie }) => {
       </div>
       <p className='text-center text-medium'>{desc}</p>{' '}
       <div className='text-center'>
-        <button className='btn btn-primary btn-block'>See Reviews</button>
+        <button onClick={onSelect} className='btn btn-primary btn-block'>
+          See Reviews
+        </button>
+        {current !== null ? <button onClick={onDeselect}>Go Back</button> : ''}
       </div>
     </div>
   );

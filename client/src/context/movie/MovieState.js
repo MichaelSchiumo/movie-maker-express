@@ -18,6 +18,7 @@ const MovieState = (props) => {
     movies: [],
     filtered: null,
     error: null,
+    current: null,
   };
   const [state, dispatch] = useReducer(movieReducer, initialState);
 
@@ -51,8 +52,16 @@ const MovieState = (props) => {
       dispatch({ type: MOVIE_ERROR, payload: err.response.msg });
     }
   };
+
   //SET CURRENT
+  const setCurrent = (movie) => {
+    dispatch({ type: SET_CURRENT, payload: movie });
+  };
   //CLEAR CURRENT
+  const clearCurrent = () => {
+    dispatch({ type: CLEAR_CURRENT });
+    getMovies();
+  };
   //FILTER MOVIES
   const filterMovies = (text) => {
     dispatch({ type: FILTER_MOVIES, payload: text });
@@ -72,6 +81,8 @@ const MovieState = (props) => {
         filterMovies,
         clearFilter,
         getMovies,
+        setCurrent,
+        clearCurrent,
       }}
     >
       {props.children}

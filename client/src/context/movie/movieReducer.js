@@ -4,6 +4,8 @@ import {
   CLEAR_FILTER,
   MOVIE_ERROR,
   GET_MOVIES,
+  SET_CURRENT,
+  CLEAR_CURRENT,
 } from '../types';
 
 export default (state, action) => {
@@ -29,6 +31,18 @@ export default (state, action) => {
           return movie.title.match(regex);
         }),
         loading: false,
+      };
+    case SET_CURRENT:
+      return {
+        ...state,
+        current: action.payload,
+        movies: [action.payload],
+      };
+    case CLEAR_CURRENT:
+      return {
+        ...state,
+        current: null,
+        movies: [state.movies],
       };
     case MOVIE_ERROR:
       return {
