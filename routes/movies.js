@@ -12,11 +12,29 @@ const Movie = require('../models/Movie');
 // @route GET api/movies
 // @desc Get all user's movies
 // @access Private
-router.get('/', auth, async (req, res) => {
+// router.get('/', auth, async (req, res) => {
+//   try {
+//     const movies = await Movie.find({ user: req.user.id }).sort({ date: -1 });
+//     res.json(movies);
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(500).send('Server Error');
+//   }
+// });
+
+//GET ALL route for movies
+router.get('/', function (req, res) {
   try {
-    const movies = await Movie.find({ user: req.user.id }).sort({ date: -1 });
-    res.json(movies);
-  } catch (error) {
+    Movie.find({}, function (err, movies) {
+      var movieMap = [];
+
+      movies.forEach(function (movie) {
+        movieMap.push(movie);
+      });
+
+      res.json(movieMap);
+    });
+  } catch (err) {
     console.error(error.message);
     res.status(500).send('Server Error');
   }
