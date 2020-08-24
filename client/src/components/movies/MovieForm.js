@@ -1,9 +1,12 @@
 import React, { useState, useContext } from 'react';
 import MovieContext from '../../context/movie/movieContext';
+import AlertContext from '../../context/alert/alertContext';
 
 const MovieForm = () => {
   const movieContext = useContext(MovieContext);
+  const alertContext = useContext(AlertContext);
 
+  const { setAlert } = alertContext;
   const { addMovie } = movieContext;
 
   const [movie, setMovie] = useState({
@@ -20,6 +23,11 @@ const MovieForm = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     addMovie(movie);
+    if (img_url === '' || desc === '' || title === '') {
+      setAlert('Please enter all fields', 'danger');
+    } else {
+      setAlert('Movie Created!', 'success');
+    }
     setMovie({
       img_url: '',
       title: '',
