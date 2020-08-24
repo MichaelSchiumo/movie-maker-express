@@ -7,6 +7,7 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_ERRORS,
+  IS_ADMIN,
 } from '../types';
 
 export default (state, action) => {
@@ -32,6 +33,7 @@ export default (state, action) => {
         loading: false,
         user: null,
         error: action.payload,
+        isAdmin: false,
       };
     case USER_LOADED:
       return {
@@ -45,6 +47,8 @@ export default (state, action) => {
         ...state,
         error: null,
       };
+    case IS_ADMIN:
+      return { ...state, isAdmin: true };
     default:
       return state;
   }
