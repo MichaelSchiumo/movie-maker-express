@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import MovieContext from '../../context/movie/movieContext';
+import AlertContext from '../../context/alert/alertContext';
 
 const MovieItem = ({ movie }) => {
-  const { img_url, title, desc } = movie;
+  const { img_url, title, desc, _id } = movie;
+  const movieContext = useContext(MovieContext);
+  const alertContext = useContext(AlertContext);
+
+  const { setCurrent, clearCurrent, current } = movieContext;
+  const { setAlert } = alertContext;
+
+  const onSelect = () => {
+    setAlert(
+      'Sorry, we cannot display reviews for this movie currently',
+      'danger'
+    );
+  };
+
+  const onDeselect = () => {
+    clearCurrent();
+  };
 
   return (
     <div className='card bg-light align-items:center'>
@@ -19,7 +37,9 @@ const MovieItem = ({ movie }) => {
       </div>
       <p className='text-center text-medium'>{desc}</p>{' '}
       <div className='text-center'>
-        <button className='btn btn-primary btn-block'>See Reviews</button>
+        <button onClick={onSelect} className='btn btn-primary btn-block'>
+          See Reviews
+        </button>
       </div>
     </div>
   );

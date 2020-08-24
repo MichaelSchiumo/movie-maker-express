@@ -64,4 +64,19 @@ router.post(
   }
 );
 
+//Read One movie
+
+router.get('/:id', async (req, res) => {
+  try {
+    const movie = await Movie.findOne({ _id: req.params.id });
+
+    if (!movie) return res.status(404).json({ msg: 'Contact not found' });
+
+    res.json(movie);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;
