@@ -4,23 +4,7 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../middleware/auth');
 const User = require('../models/User');
 const Movie = require('../models/Movie');
-
-//Want this to be a public route so all users can see all movies
-//add admin funcitonality
-//going to do it traversy's way first with auth
-//need to remove 'auth' param && middleware
-// @route GET api/movies
-// @desc Get all user's movies
-// @access Private
-// router.get('/', auth, async (req, res) => {
-//   try {
-//     const movies = await Movie.find({ user: req.user.id }).sort({ date: -1 });
-//     res.json(movies);
-//   } catch (error) {
-//     console.error(error.message);
-//     res.status(500).send('Server Error');
-//   }
-// });
+const Review = require('../models/Review');
 
 //GET ALL route for movies
 router.get('/', function (req, res) {
@@ -79,25 +63,5 @@ router.post(
     }
   }
 );
-
-//Delete a Movie (as an admin)
-// router.delete(':/id', auth, async (req, res) => {
-//   try {
-//     let movie = await Movie.findById(req.params.id);
-
-//     if (!movie) return res.status(404).json({ msg: 'Movie not found' });
-
-//     //make sure user is an admin
-//     if (movie.user.toString() !== req.user.id) {
-//       return res.status(401).json({ msg: 'Not Authorized' });
-//     }
-
-//     await Movie.findByIdAndRemove(req.params.id);
-//     res.json({ msg: 'Movie was successfully deleted' });
-//   } catch (error) {
-//     console.error(error.message);
-//     res.status(500).send('Server Error');
-//   }
-// });
 
 module.exports = router;
