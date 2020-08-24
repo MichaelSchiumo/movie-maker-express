@@ -5,7 +5,6 @@ import Home from './components/pages/Home';
 import AddMovies from './components/pages/AddMovies';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import About from './components/pages/About';
 import Navbar from './components/layout/Navbar';
 import Alerts from './components/layout/Alerts';
 import MovieState from './context/movie/MovieState';
@@ -30,8 +29,11 @@ const App = () => {
                 <Alerts />
                 <Switch>
                   <PrivateRoute exact path='/' component={Home} />
-                  <Route exact path='/about' component={About} />
-                  <Route exact path='/add_movies' component={AddMovies} />
+                  <PrivateRoute
+                    exact
+                    path='/add_movies'
+                    component={AddMovies}
+                  />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/login' component={Login} />
                 </Switch>
