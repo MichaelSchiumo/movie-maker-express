@@ -105,4 +105,17 @@ router.post('/:id', async (req, res) => {
   }
 });
 
+//get all reviews for a movie
+router.get('/:id', async (req, res) => {
+  try {
+    const movie = await Movie.findOne({ _id: req.params.id });
+    if (!movie) return res.status(404).json({ msg: 'Contact not found' });
+
+    res.json(movie.reviews);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;
