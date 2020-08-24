@@ -8,7 +8,6 @@ const MovieItem = ({ movie }) => {
     <div className='card bg-light'>
       <img src={img_url} alt='poster' />
       <h1 className='text-center x-large underline'>{title}</h1>
-
       <p className='text-center'>{desc}</p>
     </div>
   );
